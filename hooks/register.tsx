@@ -78,7 +78,7 @@ export const register: Register = on => {
     await open($)
 
     return { text: 'Dashboard de uso abierto.' }
-  })
+  }).catch(($, e, next) => next(e))
 
   // Reopen on each prompt if it was closed or never placed: a prompt counts as
   // the person asking, so it docks at any width (right side in fullscreen).
@@ -87,7 +87,7 @@ export const register: Register = on => {
     if (!pane?.isPlaced) void open($)
 
     return next(e)
-  })
+  }).catch(($, e, next) => next(e))
 
   // Keep model/effort in sync whether they were changed from the pane or typed.
   on('command.run', { command: 'model' }, async ($, e, next) => {
@@ -95,7 +95,7 @@ export const register: Register = on => {
     await remember($, { model: await $.session.model() })
 
     return ran
-  })
+  }).catch(($, e, next) => next(e))
 
   on('command.run', { command: 'effort' }, async ($, e, next) => {
     const ran = await next(e)
@@ -103,19 +103,19 @@ export const register: Register = on => {
     if (EFFORTS.includes(level)) await remember($, { effort: level })
 
     return ran
-  })
+  }).catch(($, e, next) => next(e))
 
   on('classic.UserPromptSubmit', async ($, e, next) => {
     await remember($, { mode: e.permission_mode })
 
     return next(e)
-  })
+  }).catch(($, e, next) => next(e))
 
   on('classic.Stop', async ($, e, next) => {
     await remember($, { mode: e.permission_mode, effort: e.effort?.level })
 
     return next(e)
-  })
+  }).catch(($, e, next) => next(e))
 
   // Each main-loop request names the exact model id and effort in use.
   on('turn.step', async function* ($, e, next) {
