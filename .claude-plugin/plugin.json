@@ -1,0 +1,7 @@
+{
+  "name": "usage-dashboard",
+  "version": "0.1.0",
+  "description": "Side pane with horizontal bars for the 5-hour and weekly usage limits",
+  "author": { "name": "Matias" },
+  "types": "./types/index.d.ts"
+}

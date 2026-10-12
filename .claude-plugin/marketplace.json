@@ -1,0 +1,6 @@
+{
+  "name": "matias-mods",
+  "description": "Mods de Claude Code de Matias",
+  "owner": { "name": "Matias" },
+  "plugins": [{ "name": "usage-dashboard", "source": "./" }]
+}
