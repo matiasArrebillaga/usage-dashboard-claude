@@ -1,6 +1,17 @@
 {
   "name": "matias-mods",
   "description": "Mods de Claude Code de Matias",
-  "owner": { "name": "Matias" },
-  "plugins": [{ "name": "usage-dashboard", "source": "./" }]
+  "owner": {
+    "name": "Matias"
+  },
+  "plugins": [
+    {
+      "name": "usage-dashboard",
+      "source": "./"
+    },
+    {
+      "name": "skills-panel",
+      "source": "./plugins/skills-panel"
+    }
+  ]
 }
